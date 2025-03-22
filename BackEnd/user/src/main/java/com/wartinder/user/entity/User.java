@@ -25,6 +25,6 @@ public class User {
     private String imgProfile;
     private String imgFrontpage;
     private String description;
-    private String gender;
+    //private String gender;
 }
 
