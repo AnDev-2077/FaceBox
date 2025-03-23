@@ -1,0 +1,17 @@
+server:
+  port: 8989
+  shutdown: graceful
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri:  http://localhost:8082
+          predicates:
+            - Path=/user/**
+          filters:
+            - AuthenticationFilter
+  application:
+    name: api-gateway
+

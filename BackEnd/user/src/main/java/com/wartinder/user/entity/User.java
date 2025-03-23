@@ -9,12 +9,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.naming.Name;
 @Entity
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,6 @@ public class User {
     private String imgProfile;
     private String imgFrontpage;
     private String description;
-    //private String gender;
+    private String gender;
 }
 
