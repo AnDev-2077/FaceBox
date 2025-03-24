@@ -3,6 +3,29 @@ server:
   shutdown: graceful
 
 spring:
+  main:
+    web-application-type: reactive
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://127.0.0.1:9000"
+      client:
+        registration:
+          api-gateway:
+            provider: spring
+            client-id: api-gateway-client-id
+            client-secret: 12345-client-secret
+            authorization-grant-type: authorization_code
+            redirect_uri: "http://127.0.0.1:8989/authorized"
+            scope:
+              - openid
+              - profile
+              - read
+            client-name: api-gateway
+        provider:
+          spring:
+            issuer-uri: "http://127.0.0.1:9000"
   cloud:
     gateway:
       routes:
@@ -10,8 +33,5 @@ spring:
           uri:  http://localhost:8082
           predicates:
             - Path=/user/**
-          filters:
-            - AuthenticationFilter
   application:
     name: api-gateway
-
