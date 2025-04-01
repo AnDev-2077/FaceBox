@@ -3,8 +3,7 @@ server:
   shutdown: graceful
 
 spring:
-  main:
-    web-application-type: reactive
+
   security:
     oauth2:
       resourceserver:
@@ -17,7 +16,7 @@ spring:
             client-id: api-gateway-client-id
             client-secret: 12345-client-secret
             authorization-grant-type: authorization_code
-            redirect_uri: "http://127.0.0.1:8989/authorized"
+            redirect_uri: "http://127.0.0.1:8989/user/userlist"
             scope:
               - openid
               - profile
