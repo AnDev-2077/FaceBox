@@ -106,6 +106,7 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .redirectUri("http://127.0.0.1:8989/login/oauth2/code/api-gateway")
                 .redirectUri("http://127.0.0.1:8989/user/userlist")
                 .scope("read")
                 .scope("write")

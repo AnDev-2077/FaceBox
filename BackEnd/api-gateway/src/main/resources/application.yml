@@ -1,5 +1,5 @@
 server:
-  port: 8989
+  port: 8084
   shutdown: graceful
 
 spring:
@@ -16,15 +16,12 @@ spring:
             client-id: api-gateway-client-id
             client-secret: 12345-client-secret
             authorization-grant-type: authorization_code
-            redirect_uri: "http://127.0.0.1:8989/user/userlist"
-            scope:
-              - openid
-              - profile
-              - read
+            redirect-uri: http://127.0.0.1:8084/login/oauth2/code/api-gateway
+            scope: openid,profile,read,write
             client-name: api-gateway
         provider:
           spring:
-            issuer-uri: "http://127.0.0.1:9000"
+            issuer-uri: "http://127.0.0.1:8083"
   cloud:
     gateway:
       routes:
