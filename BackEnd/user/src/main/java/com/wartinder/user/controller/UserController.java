@@ -1,7 +1,9 @@
 package com.wartinder.user.controller;
 
 import com.wartinder.user.entity.User;
+import com.wartinder.user.requests.CreateUser;
 import com.wartinder.user.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,17 +15,8 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/save")
-    public ResponseEntity<User> save(@RequestBody User user){
-        User newUser = User.builder()
-                .name(user.getName())
-                .mail(user.getMail())
-                .phone(user.getPhone())
-                .imgProfile(user.getImgProfile())
-                .imgFrontpage(user.getImgFrontpage())
-                .description(user.getDescription())
-                .gender(user.getGender())
-                .build();
-        return ResponseEntity.ok(userService.saveUser(newUser));
+    public ResponseEntity<User> save(@Valid @RequestBody CreateUser user){
+        return ResponseEntity.ok(userService.saveUser(user));
     }
     @GetMapping("/userlist")
     public ResponseEntity<List<User>> list(){
