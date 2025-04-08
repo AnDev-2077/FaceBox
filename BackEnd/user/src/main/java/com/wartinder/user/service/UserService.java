@@ -18,8 +18,8 @@ public class UserService {
 
     public User saveUser(CreateUser createUser) {
         return userRepository.save(CreateUser.to(createUser));
-
     }
+    public User getUserById(Long id) { return userRepository.findById(id).get(); }
     public List<User> listUser() {
        return userRepository.findAll();
     }

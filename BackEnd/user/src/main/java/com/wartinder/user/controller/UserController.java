@@ -14,10 +14,17 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUser(@PathVariable("userId") Long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
+    }
+
     @PostMapping("/save")
     public ResponseEntity<User> save(@Valid @RequestBody CreateUser user){
         return ResponseEntity.ok(userService.saveUser(user));
     }
+
     @GetMapping("/userlist")
     public ResponseEntity<List<User>> list(){
         return ResponseEntity.ok(userService.listUser());
