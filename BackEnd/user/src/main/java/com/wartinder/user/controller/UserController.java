@@ -1,7 +1,8 @@
 package com.wartinder.user.controller;
 
 import com.wartinder.user.entity.User;
-import com.wartinder.user.requests.CreateUser;
+import com.wartinder.user.payload.request.CreateUserRequest;
+import com.wartinder.user.payload.response.UserDetailResponse;
 import com.wartinder.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,12 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<User> getUser(@PathVariable("userId") Long id) {
+    public ResponseEntity<UserDetailResponse> getUser(@PathVariable("userId") Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @PostMapping("/save")
-    public ResponseEntity<User> save(@Valid @RequestBody CreateUser user){
+    public ResponseEntity<User> save(@Valid @RequestBody CreateUserRequest user){
         return ResponseEntity.ok(userService.saveUser(user));
     }
 

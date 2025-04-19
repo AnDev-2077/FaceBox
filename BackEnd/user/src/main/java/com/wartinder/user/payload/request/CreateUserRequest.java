@@ -1,7 +1,7 @@
-package com.wartinder.user.requests;
+package com.wartinder.user.payload.request;
 
 import com.wartinder.user.entity.User;
-import com.wartinder.user.enums.USERROLE;
+import com.wartinder.user.enums.UserRole;
 import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -9,7 +9,7 @@ import lombok.Data;
 
 import java.util.UUID;
 @Data
-public class CreateUser {
+public class CreateUserRequest {
     @NotBlank(message = "El nombre no puede estar vacío")
     @Size(min = 2, max = 50, message = "El nombre debe tener entre 2 y 50 caracteres")
     private String name;
@@ -34,17 +34,17 @@ public class CreateUser {
     @NotBlank(message = "El género no puede estar vacío")
     private String gender;
 
-    public static User to (CreateUser createUser) {
+    public static User to (CreateUserRequest createUserRequest) {
         return User.builder()
                 .publicId(UUID.randomUUID())
-                .name(createUser.getName())
-                .email(createUser.getEmail())
-                .phone(createUser.getPhone())
-                .imgProfile(createUser.getImgProfile())
-                .imgFrontpage(createUser.getImgFrontpage())
-                .description(createUser.getDescription())
-                .gender(createUser.getGender())
-                .role(USERROLE.USER)
+                .name(createUserRequest.getName())
+                .email(createUserRequest.getEmail())
+                .phone(createUserRequest.getPhone())
+                .imgProfile(createUserRequest.getImgProfile())
+                .imgFrontpage(createUserRequest.getImgFrontpage())
+                .description(createUserRequest.getDescription())
+                .gender(createUserRequest.getGender())
+                .role(UserRole.USER)
                 .build();
     }
 }

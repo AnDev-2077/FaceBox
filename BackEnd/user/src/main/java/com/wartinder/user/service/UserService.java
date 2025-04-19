@@ -1,9 +1,10 @@
 package com.wartinder.user.service;
 
 import com.wartinder.user.entity.User;
+import com.wartinder.user.payload.response.UserDetailResponse;
 import com.wartinder.user.repository.UserRepository;
 
-import com.wartinder.user.requests.CreateUser;
+import com.wartinder.user.payload.request.CreateUserRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +17,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User saveUser(CreateUser createUser) {
-        return userRepository.save(CreateUser.to(createUser));
+    public User saveUser(CreateUserRequest createUserRequest) {
+        return userRepository.save(CreateUserRequest.to(createUserRequest));
     }
-    public User getUserById(Long id) { return userRepository.findById(id).get(); }
+    public UserDetailResponse getUserById(Long id) {
+        return UserDetailResponse.from(userRepository.findById(id).get()) ;
+    }
     public List<User> listUser() {
        return userRepository.findAll();
     }
+
 }

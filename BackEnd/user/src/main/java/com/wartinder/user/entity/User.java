@@ -1,6 +1,6 @@
 package com.wartinder.user.entity;
 
-import com.wartinder.user.enums.USERROLE;
+import com.wartinder.user.enums.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +29,7 @@ public class User {
     private String imgFrontpage;
     private String description;
     private String gender;
-    private USERROLE role;
+    private UserRole role;
 
 }
 

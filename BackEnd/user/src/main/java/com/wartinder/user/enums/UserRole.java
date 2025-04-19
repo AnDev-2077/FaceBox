@@ -1,6 +1,6 @@
 package com.wartinder.user.enums;
 
-public enum USERROLE {
+public enum UserRole {
     SADMIN,
     USER
 }
